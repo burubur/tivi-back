@@ -9,7 +9,7 @@
   "scripts": {
     "dev": "./node_modules/.bin/nodemon --exec babel-node src",
     "build": "./node_modules/.bin/babel src --out-dir dist",
-    "start": "./node_modules/.bin/yarn && node dist"
+    "start": "node dist"
   },
   "dependencies": {
     "@babel/cli": "^7.2.3",
@@ -26,5 +26,8 @@
   },
   "devDependencies": {
     "yarn": "^1.13.0"
+  },
+  "engines": {
+    "node": ">=10"
   }
 }
