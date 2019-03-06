@@ -82,7 +82,7 @@ app.get("/search/tv", (req, res) => {
 var server = http.createServer(app)
 if (process.env.SSL_ENABLED) {
     let key = fs.readFileSync("./certs/server.key")
-    let cert = fs.readFileSync("./certs/server.csr")
+    let cert = fs.readFileSync("./certs/server.crt")
     server = https.createServer({key: key, cert: cert}, app)
 }
 
