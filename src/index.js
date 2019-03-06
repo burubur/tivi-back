@@ -2,7 +2,9 @@ import "@babel/polyfill"
 import dotenv from "dotenv"
 import express from 'express';
 import http from "http"
+import https from "https"
 import cors from "cors"
+import fs from "fs"
 import { cache } from "./cacher"
 import middleware from "./middleware"
 import requestor from "./requestor"
@@ -78,6 +80,11 @@ app.get("/search/tv", (req, res) => {
 })
 
 var server = http.createServer(app)
+if (process.env.SSL_ENABLED) {
+    let key = fs.readFileSync("./certs/server.key")
+    let cert = fs.readFileSync("./certs/server.csr")
+    server = https.createServer({key: key, cert: cert}, app)
+}
 
 server.listen(port, function() {}())
 server.on("error", onError)
