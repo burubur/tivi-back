@@ -81,7 +81,6 @@ app.get("/search/tv", (req, res) => {
 
 var mode = ""
 var server = http.createServer(app)
-console.log(process.env.SSL_ENABLED)
 if (process.env.SSL_ENABLED == true) {
     server.close()
     mode = "secured "

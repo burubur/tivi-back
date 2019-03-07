@@ -7,10 +7,8 @@ const middleware = (req, res, next) => {
     let cacheKey = req.url
     cacher.get(cacheKey, (e, dataSet) => {
         if (e || dataSet === null ){
-            console.log("no cached data")
             next()
         } else {
-            console.log("load cached data")
             res.send(JSON.parse(dataSet))
             res.end()
         }
