@@ -79,8 +79,12 @@ app.get("/search/tv", (req, res) => {
     })
 })
 
+var mode = ""
 var server = http.createServer(app)
-if (process.env.SSL_ENABLED) {
+console.log(process.env.SSL_ENABLED)
+if (process.env.SSL_ENABLED == true) {
+    server.close()
+    mode = "secured "
     let key = fs.readFileSync("./certs/server.key")
     let cert = fs.readFileSync("./certs/server.crt")
     server = https.createServer({key: key, cert: cert}, app)
@@ -91,7 +95,7 @@ server.on("error", onError)
 server.on("listening", onListening)
 
 function onListening(){
-    console.log("starting a web API server in port:", port)
+    console.log(`starting a ${mode}web API server in port: ${port}`)
 }
 
 function onError(e) {
