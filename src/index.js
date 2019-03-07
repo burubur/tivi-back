@@ -1,4 +1,4 @@
-import "@babel/polyfill"
+import "./../node_modules/babel-polyfill/dist/polyfill"
 import dotenv from "dotenv"
 import express from 'express';
 import http from "http"

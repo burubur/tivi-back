@@ -9,7 +9,7 @@
   "scripts": {
     "dev": "./node_modules/.bin/nodemon --exec babel-node src",
     "build": "./node_modules/.bin/babel src --out-dir dist",
-    "start": "node dist"
+    "start": "npm install yarn --save-dev && ./node_modules/.bin/babel src --out-dir dist && node dist/index.js"
   },
   "dependencies": {
     "@babel/cli": "^7.2.3",
@@ -26,6 +26,7 @@
     "redis": "^2.8.0"
   },
   "devDependencies": {
+    "babel-polyfill": "^6.26.0",
     "yarn": "^1.13.0"
   },
   "engines": {
